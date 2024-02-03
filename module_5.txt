@@ -1,0 +1,106 @@
+1. Why Django should be used for web-development? Explain how you can create a project in Django?
+---->            Django is a fast and simple framework that helps to save development time and therefore increase
+                    the overall cost-effectiveness of the project. 
+                    Also, Django has one of the best out-of-the-box security systems out there. 
+                    It helps developers avoid common security issues that could otherwise incur additional costs later.
+
+
+2. How to check installed version of django?
+---->             python -m django --version
+
+
+3. Explain what does django-admin.py make messages command is used for?
+---->           Runs over the entire source tree of the current directory and pulls out all strings marked for translation.
+
+
+4. What is Django URLs?make program to create django urls
+---->           Every page on the Internet needs its own URL. 
+                   This way your application knows what it should show to a user who opens that URL.
+                   In Django, we use something called URLconf (URL configuration). 
+                   URLconf is a set of patterns that Django will try to match the requested URL to find the correct view.
+
+
+5. What is a QuerySet?Write program to create a new Post object in database:
+---->           A QuerySet is a collection of data from a database.
+                   A QuerySet is built up as a list of objects. 
+                   QuerySets makes it easier to get the data you actually need,
+                   by allowing you to filter and order the data at an early stage.
+
+
+6. Mention what command line can be used to load data into Django?
+---->            To load data into Django you have to use the command line Django-admin.py loaddata. 
+                    The command line will searches the data and loads the contents of the named fixtures into the database.
+
+
+7. Explain what does django-admin.py make messages command is used for?
+---->              makemessages. Runs over the entire source tree of 
+                      the current directory and pulls out all strings marked for translation
+
+
+8. Make Django application to demonstrate following things o There willbe 2 modules(Admin,Product manager) o
+ Admin can add product name(ex.Product id and product name) ex. (1, Samsung), (2, Apple)...etc. Data should store in
+---->     
+#     o There will 
+#       be 2 modules(Admin,Product manager)
+#     o Admin can add product name 
+#       (ex.Product id and product name) ex. (1, Samsung), (2, Apple)...etc. 
+#       Data should store in          
+
+
+9. Product_mst table with product id as primary key o Admin can addproduct subcategory details Like (Product price, product image,Product model, product Ram) data should store in Product_sub_cattable o Admin can get product name as foreign key fromproduct_mst table in product_sub_category_details page Admin canview, update and delete all registered details of product manager cansearch product on search bar and get all details about product.
+---->
+# sed on your requirements, it seems like you want to create two database tables: Product_mst and Product_sub_cat, where Product_mst contains the main product details, and Product_sub_cat contains the subcategory details related to each product. Here's an example of how you can define these tables in SQL:
+
+# sql
+
+# CREATE TABLE Product_mst (
+#     product_id INT PRIMARY KEY,
+#     product_name VARCHAR(255) NOT NULL
+#     -- Add other relevant fields specific to the product here
+# );
+
+# CREATE TABLE Product_sub_cat (
+#     subcat_id INT PRIMARY KEY,
+#     product_id INT,
+#     price DECIMAL(10, 2),
+#     image_url VARCHAR(255),
+#     model VARCHAR(255),
+#     ram VARCHAR(50),
+#     FOREIGN KEY (product_id) REFERENCES Product_mst(product_id)
+# );
+# In the above schema, the Product_mst table has a primary key product_id to uniquely identify each product. You can add additional fields to the Product_mst table as per your requirements.
+
+# The Product_sub_cat table has a primary key subcat_id to uniquely identify each subcategory detail entry. It also contains a foreign key product_id that references the product_id column in the Product_mst table, establishing a relationship between the two tables.
+
+# With these tables defined, you can perform various operations, such as adding, retrieving, updating, and deleting data. You can use SQL queries to interact with the database and perform these operations.
+
+# Here's an example of how you can use SQL queries to perform some common operations:
+
+# Insert data into the Product_mst table:
+# sql
+
+# INSERT INTO Product_mst (product_id, product_name)
+# VALUES (1, 'Product 1');
+# Insert data into the Product_sub_cat table:
+# sql
+
+# INSERT INTO Product_sub_cat (subcat_id, product_id, price, image_url, model, ram)
+# VALUES (1, 1, 99.99, 'image.jpg', 'Model XYZ', '8GB');
+# Retrieve all product details:
+# sql
+
+# SELECT *
+# FROM Product_mst
+# JOIN Product_sub_cat ON Product_mst.product_id = Product_sub_cat.product_id;
+# Update product details:
+# sql
+
+# UPDATE Product_mst
+# SET product_name = 'New Product Name'
+# WHERE product_id = 1;
+# Delete product details:
+# sql
+
+# DELETE FROM Product_mst
+# WHERE product_id = 1;
+# Remember, the above queries are just examples, and you'll need to adapt them to your specific implementation and programming language. You can execute these queries using database connectors or libraries available in your chosen programming language (such as Python's sqlite3 module for SQLite databases or an ORM like Django for more advanced interactions).
